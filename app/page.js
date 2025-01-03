@@ -18,17 +18,18 @@ const NewsComponent = () => {
   useEffect(() => {
     if (!hydrated) return;
 
-    const fetchArticles = async () => {
-      const apiUrl = `https://newsapi.org/v2/everything?q=${query === '' ? 'latest' : query}&from=2024-12-02&sortBy=publishedAt&apiKey=252fee2129af4d539cbecef5bafcd325`;
 
+    const fetchArticles = async () => {
       try {
-        const res = await axios.get(apiUrl)
-          
+        const res = await axios.get(`/api/news`, { params: { q: query || 'default' } });
         setArticles(res.data.articles);
-      } catch (error) {
-   console.error(error)
+      
+      } catch (err) {
+       
+        console.error(err);
       }
     };
+    
 
     fetchArticles();
   }, [hydrated,query]);
