@@ -24,6 +24,7 @@ const NewsComponent = () => {
         const res = await axios.get(`/api/news`, { params: { q: query || 'default' } });
         setArticles(res.data.articles);
       
+        
       } catch (err) {
        
         console.error(err);
