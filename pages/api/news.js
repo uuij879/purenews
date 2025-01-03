@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     }
 
     const response = await axios.get('https://newsapi.org/v2/everything', {
-      params: { q, from, sortBy, apiKey },
+      params: { q, from, sortBy, apiKey,  pageSize: 50,   },
     });
 
     res.status(200).json(response.data);
