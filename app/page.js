@@ -5,6 +5,15 @@ import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
 import Footer from "./component/Footer"
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
 
 const NewsComponent = () => {
   const [articles, setArticles] = useState([]);
@@ -23,7 +32,7 @@ const NewsComponent = () => {
       try {
         const res = await axios.get(`/api/news`, { params: { q: query || 'default' } });
         setArticles(res.data.articles);
-      
+
         
       } catch (err) {
        
@@ -44,6 +53,15 @@ e.preventDefault();
   
     setquery('');
   }
+if(articles.length<=0){
+  var footer=false
+}
+else{
+  footer=true;
+}
+
+console.log(articles.length);
+
 
 
 
@@ -53,11 +71,11 @@ e.preventDefault();
         <link rel="icon" href="/favicon.png" />
       </Head>
  
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar bg-body-tertiary" >
     <div className="container-fluid">
-      <a className="navbar-brand">NewsVibe</a>
+      <a className="navbar-brand">Newsvibe</a>
       <form className="d-flex" role="search" onSubmit={handlesub}>
-        <input className="form-control me-2" value={query} onChange={(e)=>{
+        <input className="form-control me-1" value={query} onChange={(e)=>{
           setquery(e.target.value);
         }} type="search" placeholder="Search" aria-label="Search"></input>
         <button className="btn btn-outline-success" type="submit">Search</button>
@@ -96,7 +114,7 @@ e.preventDefault();
           ))}
         </div>
       </div>
-      <Footer/>
+      <Footer data={footer}/>
     </>
   );
 };

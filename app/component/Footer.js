@@ -5,8 +5,15 @@ import { FaTwitter } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
 import { CgInstagram } from "react-icons/cg";
 
-const Footer = () => {
+const Footer = ({data}) => {
+
+
+
+  if (data==true) {
+    
+  
   return (
+ 
     <footer className="footer">
       <div>
         <span className="footer-title">Services</span>
@@ -43,7 +50,10 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    
   );
+}
+
 };
 
 export default Footer;

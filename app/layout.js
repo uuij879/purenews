@@ -3,6 +3,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Nav from './component/Nav';  // Ensure Nav component is valid
 import "./globals.css";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,14 +30,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* The SearchProvider is wrapping the entire layout */}
- 
 
-          {children} {/* Other child components rendered here */}
-     
+    <ClerkProvider>
+    <html lang="en">
+      <body>
+    
+        {children}
       </body>
     </html>
+  </ClerkProvider>
   );
 }
