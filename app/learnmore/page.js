@@ -24,7 +24,7 @@ const LearnMorePage = () => {
     return <div>Loading...</div>;
   }
 
-
+var footer=true;
 
 
 
@@ -47,7 +47,7 @@ const LearnMorePage = () => {
       <p>{article.description}</p>
       <p>{article.content}</p>
     </div>
-    <Footer/>
+    <Footer data={footer}/>
     </>
   );
 };
