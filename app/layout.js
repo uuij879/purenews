@@ -25,6 +25,10 @@ export default function RootLayout({ children }) {
 
 
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="i8KEwzvdL4rdN1smtsYU0nhkRB4duWzqxxlCKxk0gM0" />
+      </head>
+
       <body>
     
         {children}
